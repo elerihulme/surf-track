@@ -20,3 +20,6 @@ class Session(models.Model):
     surfboard_used = models.TextField(blank=True)
     notes = models.TextField(blank=True)
     rating = models.IntegerField(choices=RATING, default=0)
+
+    class Meta:
+        ordering = ["date", "time"]
