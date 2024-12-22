@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import Session
 
 # Create your views here.
-def my_message(request):
-    return HttpResponse("Hello, Surfers!")
+class SessionList(generic.ListView):
+    queryset = Session.objects.all()
+    template_name = "session_list.html"
