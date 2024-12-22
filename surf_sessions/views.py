@@ -6,3 +6,4 @@ from .models import Session
 class SessionList(generic.ListView):
     queryset = Session.objects.all()
     template_name = "session_list.html"
+    paginate_by = 10
