@@ -4,21 +4,34 @@
 
 {% block content %}
 
-<!-- Creating New Sessions -->
-<div class="col-md-4 card mb-4 mt-3">
-    <div class="card-body">
-        {% if user.is_authenticated %}
-        <h3>Log a Session:</h3>
-        <p>Posting as: {{ user.username }}</p>
-        <form id="sessionForm" method="post" style="margin-top: 1.3em;">
-            {{ session_form | crispy }}
-            {% csrf_token %}
-            <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
-        </form>
-        {% else %}
-        <p>Log in to log a comment</p>
-        {% endif %}
+<!-- Main container for the log form -->
+<div class="container mt-5">
+    {% if user.is_authenticated %}
+    <div class="text-center">
+        <!-- Page Title -->
+        <h1>
+            Log a Session:
+        </h1>
+        <!-- Display the logged-in user's name -->
+        <p>
+            Posting as: {{ user.username }}
+        </p>
     </div>
+    <!-- Surf session form for logged-in users -->
+    <form method="post" class="form">
+        {{ session_form | crispy }}
+        {% csrf_token %}
+        <!-- Submit button to log session -->
+        <button type="submit" class="btn btn-primary btn-lg submit">
+            Submit
+        </button>
+    </form>
+    <!-- Message displayed if the user is not logged in -->
+    {% else %}
+    <p>
+        Log in to log a comment
+    </p>
+    {% endif %}
 </div>
 
 {% endblock %}

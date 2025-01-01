@@ -11,5 +11,4 @@ class SessionAdmin(SummernoteModelAdmin):
     list_filter = ('date', 'location')
     summernote_fields = ('notes',)
 
-# Register your models here.
 

@@ -4,20 +4,18 @@
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
 {% url 'home' as home_url %}
-{% url 'user-sessions' as user_sessions_url %}
+{% url 'my-sessions' as my_sessions_url %}
 {% url 'log-sessions' as log_sessions_url %}
 
 <!DOCTYPE html>
-<html class="h-100" lang="en">
+<html lang="en">
 
 <head>
     <title>Gower Surf Track</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Google Fonts CSS -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <meta name="description" content="track you and your friends surfs on Gower">
+    <meta name="keywords" content="surf surfer track tracker Gower surfboard">
+    <meta name="author" content="Eleri Hulme">
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -31,66 +29,102 @@
 
 </head>
 
-<body class="d-flex flex-column h-100 main-bg">
+<body class="d-flex flex-column main-bg">
+    <!-- Header -->
+    <header>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    Gower Surf Track
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Home Link -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'home' %}">
+                                Home
+                            </a>
+                        </li>
+                        <!-- Nav Items For Logged In Users-->
+                        {% if user.is_authenticated %}
+                        <!-- My Sessions Link -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == my_sessions_url %}active{% endif %}"
+                                href="{% url 'my-sessions' %}">
+                                My Sessions
+                            </a>
+                        </li>
+                        <!-- Log Session Link -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == log_session_url %}active{% endif %}"
+                                href="{% url 'log-session' %}">
+                                Log Session
+                            </a>
+                        </li>
+                        <!-- Logout Link -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_logout' %}">
+                                Logout
+                            </a>
+                        </li>
+                        <!-- Nav Items For Logged Out Users-->
+                        {% else %}
+                        <!-- Register Link -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_signup' %}">
+                                Register
+                            </a>
+                        </li>
+                        <!-- Log In Link -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
+                                href="{% url 'account_login' %}">
+                                Login
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    <!-- Authentication Status Statement -->
+                    <span class="navbar-text text-muted">
+                        {% if user.is_authenticated %}
+                        <p class="text-end m-3">
+                            You are logged in as {{ user }}
+                        </p>
+                        {% else %}
+                        <p class="text-end m-3">
+                            You are not logged in
+                        </p>
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">Gower Surf Track</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'home' %}">
-                            Home
-                        </a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == user_sessions_url %}active{% endif %}"
-                            href="{% url 'user-sessions' %}">
-                            My Sessions
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == log_session_url %}active{% endif %}"
-                            href="{% url 'log-session' %}">
-                            Log Session
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_logout' %}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_signup' %}">Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_login' %}">Login</a>
-                    </li>
-                    {% endif %}
-                </ul>
-                <span class="navbar-text text-muted">
-                    Your Surf Journey, Shared
-                </span>
+    <!-- Displaying Django messages -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
             </div>
         </div>
-    </nav>
+    </div>
 
     <main class="flex-shrink-0 main-bg">
-        {% if user.is_authenticated %}
-        <p class="text-end m-3">You are logged in as {{ user }}</p>
-        {% else %}
-        <p class="text-end m-3">You are not logged in</p>
-        {% endif %}
-
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
@@ -99,11 +133,24 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white">Gower Surf Track</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i>
+        <p class="m-0 text-center">
+            Gower Surf Track
+        </p>
+        <p class="m-0 text-center">
+            Follow us:
+            <!-- Social Media Links -->
+            <a href="https://www.facebook.com" target="_blank" class="ms-3 social-icon">
+                <i class="fab fa-facebook-square"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="ms-3 social-icon">
+                <i class="fab fa-twitter-square"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="ms-3 social-icon">
+                <i class="fab fa-instagram-square"></i>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" class="ms-3 social-icon">
+                <i class="fab fa-youtube-square"></i>
+            </a>
         </p>
     </footer>
 

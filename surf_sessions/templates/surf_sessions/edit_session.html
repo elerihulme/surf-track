@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- Main container for the edit form -->
+<div class="container mt-5">
+    <!-- Page Title -->
+    <h1>
+        Edit Surf Session
+    </h1>
+    <!-- Form to edit a surf session -->
+    <form method="post" class="form">
+        {% csrf_token %}
+        {{ session_form|crispy }}
+        <!-- Submit button to save the changes -->
+        <button type="submit" class="btn btn-primary submit">
+            Save Changes
+        </button>
+        <!-- Cancel button to return to the user session list without saving -->
+        <a href="{% url 'user-sessions' %}" class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+</div>
+{% endblock %}

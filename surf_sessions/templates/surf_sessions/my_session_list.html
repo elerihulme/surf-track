@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <!-- Main container for surf sessions table -->
 <div class="container mt-4">
-    <!-- Check if the user is authenticated (logged in) -->
-    {% if user.is_authenticated %}
-    <h1>Surf Sessions</h1>
-    <!-- Check if there are surf sessions to display -->
+    <!-- Page title -->
+    <h1>
+        My Surf Sessions
+    </h1>
+    <!-- Check if there are any surf sessions to display -->
     {% if object_list %}
-    <!-- Table to display sessions -->
+    <!-- Table to display the list of surf sessions -->
     <table class="table table-striped">
         <thead>
             <tr>
@@ -18,6 +18,7 @@
                 <th>Location</th>
                 <th>Wave Rating</th>
                 <th>Details</th>
+                <th>Edit/Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -28,15 +29,39 @@
                 <td>{{ session.get_location_display }}</td>
                 <td>{{ session.get_rating_display }}</td>
                 <td>
-                    <!-- Button to trigger modal for session details -->
+                    <!-- Button to trigger session details modal -->
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ session.id }}">
                         View Details
+                    </button>
+                </td>
+                <td>
+                    <!-- Link to edit session -->
+                    <a href="{% url 'edit-session' session.id %}" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+                    <!-- Button to trigger delete confirmation modal -->
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#delete-modal-{{ session.id }}">
+                        Delete
                     </button>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+    {% else %}
+    <!-- Message for users with no logged sessions -->
+    <div class="text-center mt-5">
+        <p class="lead">
+            You haven't logged any surf sessions yet.
+        </p>
+        <!-- Button to log a session -->
+        <a href="{% url 'log-session' %}" class="btn btn-primary">
+            Log Your First Session
+        </a>
+    </div>
+    {% endif %}
+
     <!-- Pagination section to navigate between session pages -->
     {% if is_paginated %}
     <nav aria-label="Page navigation">
@@ -44,71 +69,24 @@
             {% if page_obj.has_previous %}
             <li>
                 <!-- Link to previous page -->
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">
+                    &laquo; PREV
+                </a>
             </li>
             {% endif %}
             {% if page_obj.has_next %}
             <li>
                 <!-- Link to next page -->
-                <a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a>
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                    NEXT &raquo;
+                </a>
             </li>
             {% endif %}
         </ul>
     </nav>
     {% endif %}
 
-    <!-- If no sessions are found -->
-    {% else %}
-    <p class="text-center mt-5">
-        No surf sessions have been logged yet.
-    </p>
-    {% endif %}
-
-    <!-- For unauthenticated users (prompt to log in) -->
-    {% else %}
-    <div class="text-center mt-5">
-        <h2>Welcome to Gower Surf Track!</h2>
-        <p class="lead">
-            Track your surf sessions, discover new surf spots, and connect with fellow surfers on The Gower.
-            Gower Surf Track is a community-driven platform designed for surfers to log, rate, and share their surf
-            experiences.
-            Whether you're a seasoned pro or just starting out, join us to keep a record of your progress and find the
-            best waves.
-        </p>
-        <p>
-            By logging in, you'll gain access to:
-            <ul class="list-unstyled mt-3">
-                <li>
-                    <i class="fas fa-check-circle text-primary"></i> Record your surf sessions
-                </li>
-                <li>
-                    <i class="fas fa-check-circle text-primary"></i> View and learn from other surfers' sessions
-                </li>
-                <li>
-                    <i class="fas fa-check-circle text-primary"></i> Rate surf spots and track wave conditions
-                </li>
-                <li>
-                    <i class="fas fa-check-circle text-primary"></i> Build your personal surf history
-                </li>
-            </ul>
-        </p>
-        <!-- Login button for unauthenticated users -->
-        <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg mt-3">
-            Login to View Sessions
-        </a>
-        <p class="mt-3">
-            Don't have an account yet?
-            <!-- Sign up button for unauthenticated users -->
-            <a href="{% url 'account_signup' %}" class="text-decoration-underline">
-                Sign up here
-            </a>
-            and start your surfjourney today!
-        </p>
-    </div>
-
-    {% endif %}
-
-    <!-- Loop through each session to generate modals for viewing -->
+    <!-- Loop through each session to generate modals for viewing and deleting -->
     {% for session in object_list %}
     <!-- Modal for viewing session details -->
     <div class="modal fade" id="modal-{{ session.id }}" tabindex="-1" aria-hidden="true">
@@ -156,6 +134,36 @@
                     <!-- Close button for the modal -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="delete-modal-{{ session.id }}" tabindex="-1"
+        aria-labelledby="modal-label-{{ session.id }}" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Modal Title -->
+                    <h5 class="modal-title" id="modal-label-{{ session.id }}">
+                        Confirm Deletion
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Display session details in deletion confirmation message -->
+                <div class="modal-body">
+                    Are you sure you want to delete the session from <strong>{{ session.date }},
+                        {{ session.time }}</strong> at <strong>{{ session.get_location_display }}</strong>?
+                </div>
+                <div class="modal-footer">
+                    <!-- Link to delete the session -->
+                    <a href="{% url 'delete-session' session.id %}" class="btn btn-danger">
+                        Delete
+                    </a>
+                    <!-- Cancel button to close modal without deleting session -->
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cancel
                     </button>
                 </div>
             </div>

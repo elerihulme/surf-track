@@ -1,0 +1,31 @@
+/*------------------------------------------------------------- Base Layout and Structure*/
+/* Ensures the body stretches to fill the viewport height */
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/* Main content grows to fill available space, pushing the footer to the bottom */
+main {
+    flex: 1 0 auto;
+}
+
+/* Centers forms and restricts width for readability */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.submit {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+/*------------------------------------------------------------- Typography and Styling*/
+.social-icon {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
