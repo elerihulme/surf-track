@@ -10,6 +10,7 @@ from .forms import SessionForm
 
 # --- Class-Based Views (CBVs) ---
 
+
 class SessionList(generic.ListView):
     """
     Display a paginated list of all surf sessions (public view).
@@ -17,6 +18,7 @@ class SessionList(generic.ListView):
     queryset = Session.objects.all().order_by("-date")
     template_name = "session_list.html"
     paginate_by = 10
+
 
 class MySessionList(ListView):
     """
@@ -34,10 +36,12 @@ class MySessionList(ListView):
 
 # --- Function-Based Views (FBVs) ---
 
+
 def log_session(request):
     """
     Allow users to log a new surf session.
-    If the form is valid, the session is saved and associated with the logged-in user.
+    If the form is valid, the session is saved
+    and associated with the logged-in user.
     Success and error messages are displayed accordingly.
     """
     if request.method == 'POST':
@@ -46,20 +50,27 @@ def log_session(request):
             session = session_form.save(commit=False)
             session.user = request.user
             session.save()
-            messages.add_message(request, messages.SUCCESS, 'Surf session logged successfully!')
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Surf session logged successfully!'
+            )
             HttpResponseRedirect(reverse('home'))
         else:
-            messages.add_message(request, messages.ERROR, 'There was an error logging the session. Please try again.')
+            messages.add_message(
+                request, messages.ERROR,
+                'There was an error logging the session. Please try again.'
+            )
 
     session_form = SessionForm()
 
     return render(
-        request, 
+        request,
         "surf_sessions/log_session.html",
         {
             "session_form": session_form,
         }
     )
+
 
 def edit_session(request, session_id):
     """
@@ -77,10 +88,16 @@ def edit_session(request, session_id):
         if session_form.is_valid():
             session = session_form.save(commit=False)
             session.save()
-            messages.add_message(request, messages.SUCCESS, 'Session Updated!')
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Session Updated!'
+            )
             return HttpResponseRedirect(reverse('user-sessions'))
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating session!')
+            messages.add_message(
+                request, messages.ERROR,
+                'Error updating session!'
+            )
 
     # GET request - show the form pre-filled with existing data
     else:
@@ -90,10 +107,11 @@ def edit_session(request, session_id):
         request,
         'surf_sessions/edit_session.html',
         {
-            'session_form': session_form, 
+            'session_form': session_form,
             'session': session
         }
     )
+
 
 def delete_session(request, session_id):
     """
@@ -104,10 +122,16 @@ def delete_session(request, session_id):
 
     # Ensure the session belongs to the logged-in user
     if session.user != request.user:
-        messages.add_message(request, messages.ERROR, "You are not authorized to delete this session.")
+        messages.add_message(
+            request, messages.ERROR,
+            "You are not authorized to delete this session."
+        )
         return HttpResponseRedirect(reverse('user-sessions'))
 
     # Delete the session if authorized
     session.delete()
-    messages.add_message(request, messages.SUCCESS, "Session deleted successfully!")
+    messages.add_message(
+        request, messages.SUCCESS,
+        "Session deleted successfully!"
+    )
     return HttpResponseRedirect(reverse('user-sessions'))

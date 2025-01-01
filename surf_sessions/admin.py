@@ -10,5 +10,3 @@ class SessionAdmin(SummernoteModelAdmin):
     search_fields = ['user__username']
     list_filter = ('date', 'location')
     summernote_fields = ('notes',)
-
-

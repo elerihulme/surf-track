@@ -1,14 +1,15 @@
-from .models import Session
 from django import forms
 import datetime
+from .models import Session
 
 
 class SessionForm(forms.ModelForm):
     """
     Form for creating and editing surf session entries.
-    
-    This form uses the Session model and allows users to input details 
-    about their surf sessions, such as date, time, location, and wave conditions.
+
+    This form uses the Session model and allows users to input details
+    about their surf sessions,
+    such as date, time, location, and wave conditions.
     """
     class Meta:
         """
@@ -16,15 +17,15 @@ class SessionForm(forms.ModelForm):
         """
         model = Session
         fields = (
-            'date', 
-            'time', 
-            'location', 
-            'wave_height', 
-            'wind_direction', 
-            'wind_speed', 
-            'tide', 
-            'surfboard_used', 
-            'notes', 
+            'date',
+            'time',
+            'location',
+            'wave_height',
+            'wind_direction',
+            'wind_speed',
+            'tide',
+            'surfboard_used',
+            'notes',
             'rating'
             )
 
@@ -39,12 +40,16 @@ class SessionForm(forms.ModelForm):
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
             'time': forms.TimeInput(attrs={'type': 'time'}),
-            'surfboard_used': forms.TextInput(attrs={'placeholder': 'Enter surfboard model'})
+            'surfboard_used': forms.TextInput(attrs={
+                'placeholder': 'Enter surfboard model'
+                }
+            )
         }
 
     def clean_date(self):
         """
-        Validate the date field to ensure that the session cannot be logged in the future.
+        Validate the date field to ensure that
+        the session cannot be logged in the future.
 
         Returns:
             date: The cleaned and validated date input.
@@ -56,7 +61,9 @@ class SessionForm(forms.ModelForm):
         date = self.cleaned_data['date']
         # Check if the date is in the future
         if date > datetime.date.today():
-            raise forms.ValidationError("You cannot log a surf session in the future.")
+            raise forms.ValidationError(
+                "You cannot log a surf session in the future."
+            )
         # Return the valid date
         return date
 
@@ -68,7 +75,8 @@ class SessionForm(forms.ModelForm):
             wave_height: The cleaned and validated wave height input.
 
         Raises:
-            forms.ValidationError: If the wave height is negative or exceeds 100 feet.
+            forms.ValidationError: If the wave height is negative
+            or exceeds 100 feet.
         """
         wave_height = self.cleaned_data['wave_height']
 
@@ -76,7 +84,7 @@ class SessionForm(forms.ModelForm):
             raise forms.ValidationError("Wave height cannot be negative.")
         if wave_height > 100:
             raise forms.ValidationError("Wave height cannot exceed 100 feet.")
-        
+
         return wave_height
 
     def clean_wind_speed(self):
@@ -87,7 +95,8 @@ class SessionForm(forms.ModelForm):
             wind_speed: The cleaned and validated wind speed input.
 
         Raises:
-            forms.ValidationError: If the wind speed is negative or exceeds 100 mph.
+            forms.ValidationError: If the wind speed is negative
+            or exceeds 100 mph.
         """
         wind_speed = self.cleaned_data['wind_speed']
 
@@ -95,5 +104,5 @@ class SessionForm(forms.ModelForm):
             raise forms.ValidationError("Wind speed cannot be negative.")
         if wind_speed > 100:
             raise forms.ValidationError("Wind speed cannot exceed 100 mph.")
-        
+
         return wind_speed
