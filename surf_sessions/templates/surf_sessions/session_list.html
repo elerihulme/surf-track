@@ -16,7 +16,7 @@
                 <th>User</th>
                 <th>Date</th>
                 <th>Location</th>
-                <th>Wave Rating</th>
+                <th class="d-none d-md-table-cell">Wave Rating</th>
                 <th>Details</th>
             </tr>
         </thead>
@@ -26,10 +26,11 @@
                 <td>{{ session.user }}</td>
                 <td>{{ session.date }}</td>
                 <td>{{ session.get_location_display }}</td>
-                <td>{{ session.get_rating_display }}</td>
+                <td class="d-none d-md-table-cell">{{ session.get_rating_display }}</td>
                 <td>
                     <!-- Button to trigger modal for session details -->
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ session.id }}">
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#modal-{{ session.id }}">
                         View Details
                     </button>
                 </td>

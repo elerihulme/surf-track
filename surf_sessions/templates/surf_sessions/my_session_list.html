@@ -13,10 +13,10 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>User</th>
+                <th class="d-none d-md-table-cell">User</th>
                 <th>Date</th>
                 <th>Location</th>
-                <th>Wave Rating</th>
+                <th class="d-none d-md-table-cell">Wave Rating</th>
                 <th>Details</th>
                 <th>Edit/Delete</th>
             </tr>
@@ -24,10 +24,10 @@
         <tbody>
             {% for session in object_list %}
             <tr>
-                <td>{{ session.user }}</td>
+                <td class="d-none d-md-table-cell">{{ session.user }}</td>
                 <td>{{ session.date }}</td>
                 <td>{{ session.get_location_display }}</td>
-                <td>{{ session.get_rating_display }}</td>
+                <td class="d-none d-md-table-cell">{{ session.get_rating_display }}</td>
                 <td>
                     <!-- Button to trigger session details modal -->
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{ session.id }}">

@@ -134,4 +134,4 @@ def delete_session(request, session_id):
         request, messages.SUCCESS,
         "Session deleted successfully!"
     )
-    return HttpResponseRedirect(reverse('user-sessions'))
+    return HttpResponseRedirect(reverse('my-sessions'))
