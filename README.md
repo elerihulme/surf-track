@@ -1,21 +1,19 @@
-# E-commerce website
+# Gower Surf Track website
 
-**Deployed website: [Link to website]()**
+**Deployed website: [Link to website](https://surf-track-e46e8d35b2da.herokuapp.com/)**
 
 
-![Main image](documentation/readme_header.png)
+![Main image](documentation/features/header-image.png)
 
 ## About
 
-Surf Track is a community-driven platform for surfers to log, rate, and share their surf experiences. Users can record their surf sessions, track wave conditions, and view surf data from other community members. The site offers insights into surf spots and creates a surf journal to monitor progress over time.
-
-
+Gower Surf Track is a community-driven platform for surfers to log, rate, and share their surf experiences. Users can record their surf sessions, track wave conditions, and view surf data from other community members. The site offers insights into surf spots and creates a surf journal to monitor progress over time.
 
 ---
 
 ## UX
 
-
+The Surf Track platform is designed with a clean, intuitive interface to provide surfers with an easy and enjoyable experience when logging their surf sessions. The goal is to ensure seamless navigation, allowing users to quickly add, view, and manage their surf logs. By incorporating feedback from the surf community, the platform addresses user needs such as tracking surf conditions, rating surf spots, and sharing insights with other surfers. The responsive design ensures the platform is accessible across all devices, enhancing the experience whether accessed from a phone on the beach or a desktop at home.
 
 ### Target Audience
 
@@ -27,25 +25,30 @@ Surf Track is a community-driven platform for surfers to log, rate, and share th
 
 ### User Stories
 
-#### First Time Visitor
+#### Site User
 | Issue ID    | User Story |
 |-------------|-------------|
-| [#1](https://github.com/IuliiaKonovalova/e-commerce/issues/1) | As a First Time Visitor, I want to be able to register my account, so that I can learn the benefits of the app as a user. |
+| [#1](https://github.com/elerihulme/surf-track/issues/1) | As a site user I can view a list of all uploaded surf sessions so that I can discover new spots and learn about surf conditions |
+| [#2](https://github.com/elerihulme/surf-track/issues/2) | As a site user I can log surf sessions so that I can track my progress |
+| [#4](https://github.com/elerihulme/surf-track/issues/4) | As a site user I can edit or delete my sessions so that I can keep my data accurate and up to date |
+| [#5](https://github.com/elerihulme/surf-track/issues/5) | As a site user I can sign up and log in so that I can view the sessions of the community |
+| [#11](https://github.com/elerihulme/surf-track/issues/11) | As a site user I can select a session so that I can view the session in more detail |
+| [#12](https://github.com/elerihulme/surf-track/issues/12) | As a site user I can view a paginated list of sessions so that I can select which session I want to view |
+| [#13](https://github.com/elerihulme/surf-track/issues/13) | As a site user I can learn about the platform's features so that I understand the benefits of joining |
 
-#### Regular User (Customer)
+#### Site Owner
+
 | Issue ID    | User Story |
 |-------------|-------------|
-| [#1](https://github.com/IuliiaKonovalova/e-commerce/issues/1) | As a First Time Visitor, I want to be able to register my account, so that I can learn the benefits of the app as a user. |
-
-#### Admin
-
-| Issue ID    | User Story |
-|-------------|-------------|
-| [#43](https://github.com/IuliiaKonovalova/e-commerce/issues/43) | As a Manager, I want to be able to add, edit, and delete category, so that I can keep products’ categories up to date. |
+| [#6](https://github.com/elerihulme/surf-track/issues/6) | As a site owner I can view all the surf sessions and users so that I can monitor activity on the platform |
 
 ---
 
 ## Future Development
+
+- Filtering sessions to find relevant data easier
+- Specific details for each surf location 
+- Site admin can remove users and sessions
 
 ---
 
@@ -54,14 +57,13 @@ Surf Track is a community-driven platform for surfers to log, rate, and share th
 - ### Languages:
     
     + [Python 3.8.5](https://www.python.org/downloads/release/python-385/): the primary language used to develop the server-side of the website.
-    + [JS](https://www.javascript.com/): the primary language used to develop interactive components of the website.
     + [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): the markup language used to create the website.
     + [CSS](https://developer.mozilla.org/en-US/docs/Web/css): the styling language used to style the website.
 
 - ### Frameworks and libraries:
 
     + [Django](https://www.djangoproject.com/): python framework used to create all the logic.
-    + [Bootstrap](): was used to control click events and sending AJAX requests.
+    + [Bootstrap](https://getbootstrap.com/): library used for structure, styling and responsive design.
 
 - ### Databases:
 
@@ -77,24 +79,21 @@ Surf Track is a community-driven platform for surfers to log, rate, and share th
     + [Psycopg2](https://www.psycopg.org/): the database driver used to connect to the database.
     + [Django-allauth](https://django-allauth.readthedocs.io/en/latest/): the authentication library used to create the user accounts.
     + [Django-crispy-forms](https://django-cryptography.readthedocs.io/en/latest/): was used to control the rendering behavior of Django forms.
-    + [Render](https://pypi.org/project/render/): was used to render the README file.
     + [GitHub](https://github.com/): used to host the website's source code.
-    + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
+    + [Gitpod](https://www.gitpod.io/): the IDE used to develop the website.
+    + [Heroku](https://www.heroku.com/): the platform used to deploy the website.
     + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
     + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.
-    + [Draw.io](https://www.lucidchart.com/) was used to make a flowchart for the README file.
-    + [Coolors](https://coolors.co/202a3c-1c2431-181f2a-0b1523-65e2d9-925cef-6b28e0-ffffff-eeeeee) was used to make a color palette for the website.
     + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
     + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
-    + [JShint](https://jshint.com/): was used to validate JS code for the website.
     + [PEP8](https://pep8.org/): was used to validate Python code for the website.
-    + [Django-extensions](https://django-extensions.readthedocs.io/en/latest/) was used to create a Entity-Relationship Diagram.
+    + [Lucid Chart](https://www.lucidchart.com/) was used to create the Entity-Relationship Diagram.
 
 ---
 
 ## Features
 
-Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documentation.
+
 
 ---
 ## Design
@@ -109,11 +108,28 @@ Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documen
 
 ### Wireframes
 
+#### Mobile
+
+- ![Home. Mobile Screen](documentation/wireframes/home-mobile-wireframe.png)
+- ![Home, Details Modal. Mobile Screen](documentation/wireframes/home-detail-mobile-wireframe.png)
+- ![My Sessions. Mobile Screen](documentation/wireframes/my-sessions-mobile-wireframe.png)
+- ![My Sessions, Details modal. Mobile Screen](documentation/wireframes/my-sessions-details-mobile-wireframe.png)
+- ![Log a Session. Mobile Screen](documentation/wireframes/log-a-session-mobile-wireframe.png)
+
+#### Desktop
+
+- ![Home. Desktop Screen](documentation/wireframes/home-desktop-wireframe.png)
+- ![Home, Details Modal. Desktop Screen](documentation/wireframes/home-details-desktop-wireframe.png)
+- ![My Sessions. Desktop Screen](documentation/wireframes/my-sessions-desktop-wireframe.png)
+- ![My Sessions, Details modal. Desktop Screen](documentation/wireframes/my-sessions-details-desktop-wireframe.png)
+- ![Log a Session. Desktop Screen](documentation/wireframes/log-a-session-desktop-wireframe.png)
 
 
 ---
 
 ## Agile Methodology
+
+- Development followed Agile practices using GitHub Issues and Projects.
 
 ### GitHub Project Management
 
@@ -125,30 +141,56 @@ Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documen
 
 ### Database
 
-*
+- **SQLite** - Development.  
+- **PostgreSQL** - Production.  
+
 
 ### Entity-Relationship Diagram
 
-
+![ERD](documentation/database/ERD.png)
 
 ### Data Modeling
 
-#### Role Model
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name          | name          | CharField    | max_length=50, unique=True, blank=True, null=False, verbose_name='Role name' |
-| description   | description   | TextField    | max_length=500, blank=True, null=True, verbose_name='Role description' |
-
-#### Future Models:
+#### Session Model
+| Name           | Field Type            | Validation                                                  |
+| -------------- | --------------------- | ----------------------------------------------------------- |
+| user           | ForeignKey            | User, on_delete=models.CASCADE, related_name="surf_sessions"|
+| date           | DateField             | default=datetime.date.today                                 |
+| time           | TimeField             | default=datetime.time(0, 0)                                 |
+| location       | IntegerField          | choices=LOCATION, default=0                                 |
+| wave_height    | PositiveIntegerField  |                                                             |
+| wind_direction | IntegerField          | choices=WIND, default=0                                     |
+| wind_speed     | PositiveIntegerField  |                                                             |
+| tide           | IntegerField          | choices=TIDE, default=0                                     |
+| surfboard_used | CharField             | blank=True                                                  |
+| notes          | TextField             | blank=True                                                  |
+| rating         | IntegerField          | choices=RATING, default=0                                   |
 
 ---
 ## Testing
 
-
+Please refer to the [TESTING.md](TESTING.md) file for all test-related documentation.
 
 ---
 
 ## Deployment
+
+- The app was deployed to [Heroku](https://www.heroku.com/)
+
+After account setup the deployment steps are as follows:
+
+- Select **New** in the top-right corner of your Heroku Dashboard, and select **Create new app** from the dropdown menu.
+- Your app name must be unique, then choose a region closest to you (EU or USA), and select **Create App**.
+- In the "Deploy" tab choose GitHub as the deployment method
+- Connect your GitHub account/ find and connect your GitHub repository
+- From the new app **Settings**, click **Reveal Config Vars**, and set your environment variables.
+
+| Key | Value |
+| --- | --- |
+| `DATABASE_URL` | user's own value |
+| `SECRET_KEY` | user's own value |
+
+
 
 
 
@@ -167,3 +209,9 @@ Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documen
 - [Coolors](https://coolors.co/): for providing a free platform to generate your own palette.
 
 ## Acknowledgments
+
+- [Julia Konovalova](https://github.com/IuliiaKonovalova) was a great mentor throughout this project, guiding me to help shape the project and bring it to life.
+- [Code Institute](https://codeinstitute.net/) for the knowledge to complete a project like this and to the tutors and slack community for their support and help.
+- My friends and family for their feedback and help in testing the site.
+
+---
