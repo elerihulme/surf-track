@@ -60,65 +60,47 @@ class Session(models.Model):
         rating (IntegerField): User rating for the session (1-5 stars).
     """
 
-    # Link the session to the user who created it.
-    # If the user is deleted, the session is also deleted.
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name="surf_sessions"
     )
 
-    # Date of the surf session; defaults to today's date.
     date = models.DateField(
         default=datetime.date.today
     )
 
-    # Time of the surf session; defaults to midnight (00:00).
     time = models.TimeField(
         default=datetime.time(0, 0)
     )
 
-    # Location of the surf session, selected from predefined choices;
-    # defaults to the first location (Langland).
     location = models.IntegerField(
         choices=LOCATION,
         default=0
     )
 
-    # Height of the waves in feet (positive values only).
     wave_height = models.PositiveIntegerField()
 
-    # Wind direction during the surf session, selected from predefined choices;
-    # defaults to the first direction (North).
     wind_direction = models.IntegerField(
         choices=WIND,
         default=0
     )
 
-    # Wind speed in mph during the session (positive values only).
     wind_speed = models.PositiveIntegerField()
 
-    # Tide condition during the session, selected from predefined choices;
-    # defaults to the first option (High).
     tide = models.IntegerField(
         choices=TIDE,
         default=0
     )
 
-    # Description of the surfboard used, can be left blank.
     surfboard_used = models.TextField(
         blank=True
     )
 
-    # Additional notes or observations about the surf session,
-    # can be left blank.
     notes = models.TextField(
         blank=True
     )
 
-    # User rating of the session (1 to 5 stars),
-    # selected from predefined choices;
-    # defaults to the first option (1 star).
     rating = models.IntegerField(
         choices=RATING,
         default=0
@@ -128,8 +110,8 @@ class Session(models.Model):
         """
         Meta options for the Session model.
         """
-        # Order sessions by date and time (latest first).
         ordering = ["-date", "-time"]
+
 
     def __str__(self):
         """

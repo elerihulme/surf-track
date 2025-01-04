@@ -2,7 +2,6 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.views.generic import ListView
 from django.contrib.auth.models import User
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Session
@@ -54,11 +53,19 @@ def log_session(request):
                 request, messages.SUCCESS,
                 'Surf session logged successfully!'
             )
-            HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('home'))
+        
         else:
             messages.add_message(
                 request, messages.ERROR,
                 'There was an error logging the session. Please try again.'
+            )
+            return render(
+                request,
+                "surf_sessions/log_session.html",
+                {
+                    "session_form": session_form,
+                }
             )
 
     session_form = SessionForm()
@@ -92,11 +99,20 @@ def edit_session(request, session_id):
                 request, messages.SUCCESS,
                 'Session Updated!'
             )
-            return HttpResponseRedirect(reverse('user-sessions'))
+            return HttpResponseRedirect(reverse('my-sessions'))
+        
         else:
             messages.add_message(
                 request, messages.ERROR,
-                'Error updating session!'
+                'There was an error editing the session. Please try again.'
+            )
+            return render(
+                request,
+                'surf_sessions/edit_session.html',
+                {
+                    'session_form': session_form,
+                    'session': session
+                }
             )
 
     # GET request - show the form pre-filled with existing data
@@ -126,7 +142,7 @@ def delete_session(request, session_id):
             request, messages.ERROR,
             "You are not authorized to delete this session."
         )
-        return HttpResponseRedirect(reverse('user-sessions'))
+        return HttpResponseRedirect(reverse('my-sessions'))
 
     # Delete the session if authorized
     session.delete()
