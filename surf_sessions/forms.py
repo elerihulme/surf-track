@@ -29,14 +29,12 @@ class SessionForm(forms.ModelForm):
             'rating'
             )
 
-        # Custom labels for better user readability in the form
         labels = {
             'wave_height': 'Wave Height (ft)',
             'wind_speed': 'Wind Speed (mph)',
             'rating': 'Wave Rating (1-5)'
         }
 
-        # Widgets for customizing field rendering
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
             'time': forms.TimeInput(attrs={'type': 'time'}),

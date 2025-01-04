@@ -43,8 +43,10 @@ def log_session(request):
     and associated with the logged-in user.
     Success and error messages are displayed accordingly.
     """
+    # POST request - process form submission
     if request.method == 'POST':
         session_form = SessionForm(request.POST)
+        # Save valid forms to the database
         if session_form.is_valid():
             session = session_form.save(commit=False)
             session.user = request.user
@@ -55,6 +57,7 @@ def log_session(request):
             )
             return HttpResponseRedirect(reverse('home'))
         
+        # Return error for invalid forms
         else:
             messages.add_message(
                 request, messages.ERROR,
@@ -67,8 +70,10 @@ def log_session(request):
                     "session_form": session_form,
                 }
             )
-
-    session_form = SessionForm()
+    
+    # If request method is GET, display an empty session form for logging
+    else:
+        session_form = SessionForm()
 
     return render(
         request,
@@ -92,6 +97,7 @@ def edit_session(request, session_id):
     if request.method == "POST":
         session_form = SessionForm(data=request.POST, instance=session)
 
+        # Allow valid forms to be edited
         if session_form.is_valid():
             session = session_form.save(commit=False)
             session.save()
@@ -101,6 +107,7 @@ def edit_session(request, session_id):
             )
             return HttpResponseRedirect(reverse('my-sessions'))
         
+        # Return error for invalid edits
         else:
             messages.add_message(
                 request, messages.ERROR,
