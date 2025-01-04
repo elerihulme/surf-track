@@ -10,12 +10,16 @@
     <div class="col-md-8 mt-3 offset-md-2">
       <h3>{% trans "Sign Up" %}</h3>
 
-      <p>{% blocktrans %}
+      <p>
+        {% blocktrans %}
         Welcome back to Gower Surf Track.
         Do you already have an account? Then please
-        <a class="link" href="{{ login_url }}">sign in</a>
+        <a class="link" href="{{ login_url }}" aria-label="Sign in to your existing account">
+          sign in
+        </a>
         instead.
-        {% endblocktrans %}</p>
+        {% endblocktrans %}
+      </p>
     </div>
   </div>
   <div class="row">
@@ -26,8 +30,9 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn btn-primary right" type="submit">
-          {% trans "Sign Up" %} &raquo;</button>
+        <button class="btn btn-primary right" type="submit" aria-label="Submit sign up form">
+          {% trans "Sign Up" %} &raquo;
+        </button>
       </form>
     </div>
   </div>

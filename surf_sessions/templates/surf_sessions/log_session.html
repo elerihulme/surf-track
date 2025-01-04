@@ -22,7 +22,7 @@
         {{ session_form | crispy }}
         {% csrf_token %}
         <!-- Submit button to log session -->
-        <button type="submit" class="btn btn-primary btn-lg submit">
+        <button type="submit" class="btn btn-primary btn-lg submit" aria-label="Submit surf session log">
             Submit
         </button>
     </form>

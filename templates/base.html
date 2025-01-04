@@ -39,7 +39,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid">
                 <!-- Logo -->
-                <a class="navbar-brand" href="{% url 'home' %}">
+                <a class="navbar-brand" href="{% url 'home' %}" aria-label="Go to homepage">
                     Gower Surf Track
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -51,7 +51,7 @@
                         <!-- Home Link -->
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
-                                href="{% url 'home' %}">
+                                href="{% url 'home' %}" aria-label="Go to Home page">
                                 Home
                             </a>
                         </li>
@@ -60,21 +60,23 @@
                         <!-- My Sessions Link -->
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == my_sessions_url %}active"
-                                aria-current="page{% endif %}" href="{% url 'my-sessions' %}">
+                                aria-current="page{% endif %}" href="{% url 'my-sessions' %}"
+                                aria-label="View your surf sessions">
                                 My Sessions
                             </a>
                         </li>
                         <!-- Log Session Link -->
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == log_session_url %}active"
-                                aria-current="page{% endif %}" href="{% url 'log-session' %}">
+                                aria-current="page{% endif %}" href="{% url 'log-session' %}"
+                                aria-label="Log a new surf session">
                                 Log Session
                             </a>
                         </li>
                         <!-- Logout Link -->
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}"
-                                href="{% url 'account_logout' %}">
+                                href="{% url 'account_logout' %}" aria-label="Logout from your account">
                                 Logout
                             </a>
                         </li>
@@ -83,14 +85,14 @@
                         <!-- Register Link -->
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == signup_url %}active" aria-current="page{% endif %}"
-                                href="{% url 'account_signup' %}">
+                                href="{% url 'account_signup' %}" aria-label="Register for a new account">
                                 Register
                             </a>
                         </li>
                         <!-- Log In Link -->
                         <li class="nav-item">
                             <a class="nav-link {% if request.path == login_url %}active" aria-current="page{% endif %}"
-                                href="{% url 'account_login' %}">
+                                href="{% url 'account_login' %}" aria-label="Login to your account">
                                 Login
                             </a>
                         </li>
@@ -118,7 +120,8 @@
                 {% for message in messages %}
                 <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                     {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                        aria-label="Close alert message"></button>
                 </div>
                 {% endfor %}
             </div>
@@ -140,16 +143,19 @@
         <p class="m-0 text-center">
             Follow us:
             <!-- Social Media Links -->
-            <a href="https://www.facebook.com" target="_blank" class="ms-3 social-icon">
+            <a href="https://www.facebook.com" target="_blank" class="ms-3 social-icon"
+                aria-label="Follow us on Facebook">
                 <i class="fab fa-facebook-square"></i>
             </a>
-            <a href="https://twitter.com" target="_blank" class="ms-3 social-icon">
+            <a href="https://twitter.com" target="_blank" class="ms-3 social-icon" aria-label="Follow us on Twitter">
                 <i class="fab fa-twitter-square"></i>
             </a>
-            <a href="https://www.instagram.com" target="_blank" class="ms-3 social-icon">
+            <a href="https://www.instagram.com" target="_blank" class="ms-3 social-icon"
+                aria-label="Follow us on Instagram">
                 <i class="fab fa-instagram-square"></i>
             </a>
-            <a href="https://www.youtube.com" target="_blank" class="ms-3 social-icon">
+            <a href="https://www.youtube.com" target="_blank" class="ms-3 social-icon"
+                aria-label="Subscribe to our YouTube channel">
                 <i class="fab fa-youtube-square"></i>
             </a>
         </p>

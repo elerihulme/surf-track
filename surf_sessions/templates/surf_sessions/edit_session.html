@@ -13,11 +13,12 @@
         {% csrf_token %}
         {{ session_form|crispy }}
         <!-- Submit button to save the changes -->
-        <button type="submit" class="btn btn-primary submit">
+        <button type="submit" class="btn btn-primary submit" aria-label="Save changes to this surf session">
             Save Changes
         </button>
         <!-- Cancel button to return to the user session list without saving -->
-        <a href="{% url 'my-sessions' %}" class="btn btn-secondary submit">
+        <a href="{% url 'my-sessions' %}" class="btn btn-secondary submit"
+            aria-label="Cancel and return to My Sessions">
             Cancel
         </a>
     </form>
