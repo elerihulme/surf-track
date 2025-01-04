@@ -93,7 +93,17 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 ## Features
 
+### Home Page
 
+### My Sessions Page
+
+### Log Session Page
+
+### Register PAge
+
+### Login Page
+
+### Logout Page
 
 ---
 ## Design
@@ -110,19 +120,19 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 #### Mobile
 
-- ![Home. Mobile Screen](documentation/wireframes/home-mobile-wireframe.png)
-- ![Home, Details Modal. Mobile Screen](documentation/wireframes/home-detail-mobile-wireframe.png)
-- ![My Sessions. Mobile Screen](documentation/wireframes/my-sessions-mobile-wireframe.png)
-- ![My Sessions, Details modal. Mobile Screen](documentation/wireframes/my-sessions-details-mobile-wireframe.png)
-- ![Log a Session. Mobile Screen](documentation/wireframes/log-a-session-mobile-wireframe.png)
+- [Home. Mobile Screen](documentation/wireframes/home-mobile-wireframe.png)
+- [Home, Details Modal. Mobile Screen](documentation/wireframes/home-detail-mobile-wireframe.png)
+- [My Sessions. Mobile Screen](documentation/wireframes/my-sessions-mobile-wireframe.png)
+- [My Sessions, Details modal. Mobile Screen](documentation/wireframes/my-sessions-details-mobile-wireframe.png)
+- [Log a Session. Mobile Screen](documentation/wireframes/log-a-session-mobile-wireframe.png)
 
 #### Desktop
 
-- ![Home. Desktop Screen](documentation/wireframes/home-desktop-wireframe.png)
-- ![Home, Details Modal. Desktop Screen](documentation/wireframes/home-details-desktop-wireframe.png)
-- ![My Sessions. Desktop Screen](documentation/wireframes/my-sessions-desktop-wireframe.png)
-- ![My Sessions, Details modal. Desktop Screen](documentation/wireframes/my-sessions-details-desktop-wireframe.png)
-- ![Log a Session. Desktop Screen](documentation/wireframes/log-a-session-desktop-wireframe.png)
+- [Home. Desktop Screen](documentation/wireframes/home-desktop-wireframe.png)
+- [Home, Details Modal. Desktop Screen](documentation/wireframes/home-details-desktop-wireframe.png)
+- [My Sessions. Desktop Screen](documentation/wireframes/my-sessions-desktop-wireframe.png)
+- [My Sessions, Details modal. Desktop Screen](documentation/wireframes/my-sessions-details-desktop-wireframe.png)
+- [Log a Session. Desktop Screen](documentation/wireframes/log-a-session-desktop-wireframe.png)
 
 
 ---
@@ -147,7 +157,7 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 ### Entity-Relationship Diagram
 
-![ERD](documentation/database/ERD.png)
+[ERD](documentation/database/erd.png)
 
 ### Data Modeling
 
@@ -179,19 +189,45 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 
 After account setup the deployment steps are as follows:
 
-- Select **New** in the top-right corner of your Heroku Dashboard, and select **Create new app** from the dropdown menu.
-- Your app name must be unique, then choose a region closest to you (EU or USA), and select **Create App**.
-- In the "Deploy" tab choose GitHub as the deployment method
-- Connect your GitHub account/ find and connect your GitHub repository
-- From the new app **Settings**, click **Reveal Config Vars**, and set your environment variables.
+### 1. Create a New Heroku App:
+- Select **New** in the top-right corner of your Heroku Dashboard.
+- Choose **Create new app** from the dropdown menu.
+- Enter a unique app name and select the region (EU or USA).
+- Click **Create App**.
+
+### 2. Connect to GitHub:
+- In the app dashboard, navigate to the **Deploy** tab.
+- Under the **Deployment method** section, select **GitHub**.
+- Click **Connect to GitHub** and authorize Heroku to access your GitHub account.
+- Search for your repository and click **Connect**.
+
+### 3. Set Environment Variables (Config Vars):
+- Go to the **Settings** tab and click **Reveal Config Vars**.
+- Add the following key-value pairs:
 
 | Key | Value |
 | --- | --- |
 | `DATABASE_URL` | user's own value |
 | `SECRET_KEY` | user's own value |
 
+### 4. Prepare Django for Heroku Deployment:
+
+- Create an env.py file
+
+- Install the required packages:
+  pip install gunicorn django-heroku psycopg2
+
+- Update requirements.txt
+
+- Add Heroku to allowed_hosts
+
+- Create a Procfile in your project"s root directory and add:
+    web: gunicorn <your_project_name>.wsgi
 
 
+### 5. Push to GitHub
+
+### 6. Deploy
 
 
 ---
