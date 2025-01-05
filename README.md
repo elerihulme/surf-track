@@ -56,14 +56,15 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 ## Technologies used
 - ### Languages:
     
-    + [Python 3.8.5](https://www.python.org/downloads/release/python-385/): the primary language used to develop the server-side of the website.
+    + [Python](https://www.python.org/): the primary language used to develop the server-side of the website.
     + [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): the markup language used to create the website.
     + [CSS](https://developer.mozilla.org/en-US/docs/Web/css): the styling language used to style the website.
+    + [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript): language used to provide interactivity to the website.
 
-- ### Frameworks and libraries:
+- ### Frameworks:
 
     + [Django](https://www.djangoproject.com/): python framework used to create all the logic.
-    + [Bootstrap](https://getbootstrap.com/): library used for structure, styling and responsive design.
+    + [Bootstrap](https://getbootstrap.com/): css framework used for structure, styling and responsive design.
 
 - ### Databases:
 
@@ -84,6 +85,8 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
     + [Heroku](https://www.heroku.com/): the platform used to deploy the website.
     + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
     + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.
+    + [Google Fonts](https://fonts.google.com/): was used to provide fonts for the website.
+    + [favicon.io](https://favicon.io/): was used to create the favicon for the website.
     + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
     + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
     + [PEP8](https://pep8.org/): was used to validate Python code for the website.
@@ -234,15 +237,14 @@ After account setup the deployment steps are as follows:
 
 ## Credits
 
-- [GitHub](https://github.com/) for giving the idea of the project's design.
 - [Django](https://www.djangoproject.com/) for the framework.
 - [Font awesome](https://fontawesome.com/): for the free access to icons.
 - [Render](https://render.com/): for providing a free hosting.
 - [Postgresql](https://www.postgresql.org/): for providing a free database.
 - [googlefonts](https://fonts.google.com/): for providing free fonts.
+- [favicon.io](https://favicon.io/): for providing free favicons.
 - [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): for providing a free platform to test website responsiveness
 - [GoFullPage](https://gofullpage.com/): for allowing to create free full web page screenshots;
-- [Coolors](https://coolors.co/): for providing a free platform to generate your own palette.
 
 ## Acknowledgments
 
