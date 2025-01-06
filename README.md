@@ -89,24 +89,176 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
     + [favicon.io](https://favicon.io/): was used to create the favicon for the website.
     + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
     + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
-    + [PEP8](https://pep8.org/): was used to validate Python code for the website.
+    + [CI Python Linter](https://pep8ci.herokuapp.com/): was used to validate Python code for the website.
     + [Lucid Chart](https://www.lucidchart.com/) was used to create the Entity-Relationship Diagram.
 
 ---
 
 ## Features
 
+### Header
+
+- Displays the user's authentication status.
+- Different navigation links are displayed based on whether the user is logged in or not.
+- The site logo is clickable and redirects to the home page.
+- The active page link is solid, while inactive links appear faded for clarity.
+
+**Responsiveness**:  
+- On smaller screens, the navigation bar collapses into a hamburger menu that expands when clicked.
+- The authentication status is hidden on smaller screens to save space and maintain a clean layout.
+
+---
+
+### Footer
+
+- Displays the website name.
+- Contains social media links with the prompt "Follow us" for user engagement.
+- Links to Facebook, Twitter, Instagram, and YouTube.
+
+**Responsiveness**:  
+- The footer is fixed at the bottom of the page regardless of content size.
+- It scales naturally on smaller screens without cutting off any elements.
+
+---
+
 ### Home Page
+
+- The home page serves as a dynamic feed displaying the latest surf sessions logged by users.
+
+**For Non-Logged-In Users**:  
+- The home page displays a welcome message and prompts users to log in or sign up.  
+- A list is displayed, detailing the benefits of joining the platform, such as tracking surf sessions and learning from other surfers.
+- A call-to-action button for the user to login and a link if they need to sign up.
+
+**For Logged-In Users**:  
+- Displays a table of the latest surf sessions posted by users in reverse chronological order.  
+- Columns include:
+  - **User** – The surfer who logged the session.
+  - **Date** – The date of the session.
+  - **Location** – Surf spot where the session took place.
+  - **Wave Rating** – Overall rating of wave conditions (hidden on smaller screens for responsiveness).  
+  - **Details** – A button labeled "View Details" opens a modal with full session information.
+
+**Pagination**:  
+- Sessions are paginated, with 10 sessions per page.  
+- Navigation buttons ("Next" and "Previous") allow users to switch between pages, ensuring a seamless browsing experience.  
+- On the last page, only the "Previous" button is visible to indicate no further sessions are available.
+
+**Modal View**:  
+- Clicking "View Details" opens a modal that displays:
+  - Full session details (user, location, wave height, wind speed, tide, surfboard used, and additional notes).  
+
+**Responsiveness**:  
+- The wave rating column is hidden on smaller screens to prevent horizontal scrolling and ensure the table fits neatly.
+
+---
 
 ### My Sessions Page
 
+- Displays a list of surf sessions logged by the currently authenticated user.
+
+**For Logged-In Users**:  
+- Available only to logged-in users. Non-authenticated users will not see the "My Sessions" link in the navigation bar.  
+- If no sessions are logged, users see a message with a call-to-action button encouraging them to log their first session.  
+
+**Table of Sessions**:  
+- Sessions are shown in reverse chronological order, with columns for:  
+  - **User** – To confirm the session belongs to the logged-in user.  
+  - **Date** – Date of the surf session.  
+  - **Location** – Surf spot.  
+  - **Wave Rating** – Overall session rating.  
+  - **Details** – "View Details" button opens a modal with session information.  
+  - **Edit/Delete** – "Edit" and "Delete" buttons to allow users to manage their sessions.  
+
+**Edit/Delete Column**:  
+- **Edit** – Redirects to an edit form prefilled with session data.  
+- **Delete** – Opens a confirmation modal to ensure intentional deletion.  
+
+**Pagination**:  
+- Displays 10 sessions per page, with pagination links for easy navigation between older and newer sessions.
+- On the last page, only the "Previous" button is visible to indicate no further sessions are available.  
+
+---
+
 ### Log Session Page
 
-### Register PAge
+- Provides a form for users to log a new surf session.
+- The form automatically assigns the logged in user to the session.
+- Form fields include:
+  - **Date** – Select a date (date picker).  
+  - **Time** – Time of the session.  
+  - **Location** – Drop-down list of predefined surf spots.  
+  - **Wave Height** – Enter wave height in feet.  
+  - **Wind Speed** – Wind speed (mph).  
+  - **Tide** – Select tide condition.  
+  - **Surfboard Used** – Text input for surfboard model.  
+  - **Notes** – Free text for additional details.  
+  - **Rating** – Select a wave rating (1-5).  
+
+**Form Validation**:  
+- Validates that the session date is not in the future.  
+- Ensures wave height and wind speed are within acceptable ranges.
+- Fields with an asterix must be filled in.  
+
+**Success/Error Feedback**:  
+- Users receive a success message if the form is submitted successfully.  
+- Form errors are displayed inline for individual fields if validation fails.  
+
+---
+
+### Edit Session Page
+
+- Similar to the log session page but pre-populated with the session’s existing data.  
+- Users can modify session details and save changes.
+- Cancel button is available, if users change their mind, and are then redirected back to 'My Sessions' page.  
+
+**Access Control**:  
+- Only the user who created the session can access and edit it.  
+- Unauthorized users attempting to access the edit page are redirected.  
+
+**Success/Error Feedback**:  
+- Success message on successful update.  
+- Inline error messages for validation issues.  
+
+---
+
+### Register Page
+
+- Provides a form for new users to create an account. 
+- Prompt for users who already have an acoount to sign in. 
+- Form fields include:  
+  - **Username**  
+  - **Email**  
+  - **Password (twice for confirmation)**
+
+**Success/Error Feedback**: 
+- Error messages are displayed inline for invalid inputs.  
+- Successful registration redirects users to the home page.  
+
+---
 
 ### Login Page
 
+- Allows existing users to log into their accounts.
+- Prompt for users who don't have an account yet to sign up.  
+- Form fields:  
+  - **Username/Email**  
+  - **Password**  
+- Remember me check box, to make it quicker for regular users.
+
+**Success/Error Feedback**:
+- Users receive an error message if authentication fails.
+- Successful login reieves a success messages and redirects users to the home page.   
+
+---
+
 ### Logout Page
+
+- Simple confirmation page asking users if they want to log out.  
+- Clicking "Sign Out" logs the user out and redirects to the home page.  
+
+**Success Feedback**:
+- Successful sign out receives a success message.
 
 ---
 ## Design
@@ -114,10 +266,20 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 ### Color Scheme
 
+Colour scheme was kept very basic to give the site a clean feel. The background was kept as white and the text as black.
+![Colour Scheme](documentation/design/colours.png)
 
+The buttons were then coloured to make them stand out.  
 
 ### Typography
 
+For the logo I used the Pacifico font from Google Fonts, as the curly bold design is infitting with the surf theme fo the website.
+
+![Pacifico](documentation/design/pacifico.png)
+
+For all other text I used the Roboto font from Google Fonts, as it is a neat, easily readable font that keeps with the clean feel of the website.
+
+![Roboto](documentation/design/roboto.png)
 
 ### Wireframes
 

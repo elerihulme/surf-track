@@ -112,7 +112,6 @@ class Session(models.Model):
         """
         ordering = ["-date", "-time"]
 
-
     def __str__(self):
         """
         Return a string representation of the session.

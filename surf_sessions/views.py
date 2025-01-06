@@ -56,7 +56,7 @@ def log_session(request):
                 'Surf session logged successfully!'
             )
             return HttpResponseRedirect(reverse('home'))
-        
+
         # Return error for invalid forms
         else:
             messages.add_message(
@@ -70,7 +70,7 @@ def log_session(request):
                     "session_form": session_form,
                 }
             )
-    
+
     # If request method is GET, display an empty session form for logging
     else:
         session_form = SessionForm()
@@ -106,7 +106,7 @@ def edit_session(request, session_id):
                 'Session Updated!'
             )
             return HttpResponseRedirect(reverse('my-sessions'))
-        
+
         # Return error for invalid edits
         else:
             messages.add_message(
