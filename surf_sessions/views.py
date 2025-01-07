@@ -27,6 +27,7 @@ class MySessionList(ListView):
     template_name = 'surf_sessions/my_session_list.html'
     paginate_by = 10
 
+    # Code modified from VinDevs
     def get_queryset(self):
         """
         Return only sessions belonging to the currently logged-in user.

@@ -35,12 +35,18 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 | [#11](https://github.com/elerihulme/surf-track/issues/11) | As a site user I can select a session so that I can view the session in more detail |
 | [#12](https://github.com/elerihulme/surf-track/issues/12) | As a site user I can view a paginated list of sessions so that I can select which session I want to view |
 | [#13](https://github.com/elerihulme/surf-track/issues/13) | As a site user I can learn about the platform's features so that I understand the benefits of joining |
+| [#14](https://github.com/elerihulme/surf-track/issues/14) | As a site user I can view the site on any screen size so that I can have a seamless experience regardless of how or where I access it |
+| [#16](https://github.com/elerihulme/surf-track/issues/16) | As a site user I can click on social media links so that I can follow the platform's updates, engage with the community, and stay informed about new features or announcements through social channels. |
+| [#17](https://github.com/elerihulme/surf-track/issues/17) | As a site user I can receive error and success messages so that I know when my actions have either failed or succeeded. |
+
 
 #### Site Owner
 
 | Issue ID    | User Story |
 |-------------|-------------|
 | [#6](https://github.com/elerihulme/surf-track/issues/6) | As a site owner I can view all the surf sessions and users so that I can monitor activity on the platform |
+| [#8](https://github.com/elerihulme/surf-track/issues/8) | As a site owner I can edit or remove sessions so that inappropriate or inaccurate content is removed |
+| [#9](https://github.com/elerihulme/surf-track/issues/9) | As a site owner I can remove users so that I can manage site activity and behaviour |
 
 ---
 
@@ -48,7 +54,6 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 - Filtering sessions to find relevant data easier
 - Specific details for each surf location 
-- Site admin can remove users and sessions
 
 ---
 
@@ -59,7 +64,7 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
     + [Python](https://www.python.org/): the primary language used to develop the server-side of the website.
     + [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML): the markup language used to create the website.
     + [CSS](https://developer.mozilla.org/en-US/docs/Web/css): the styling language used to style the website.
-    + [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript): language used to provide interactivity to the website.
+    + [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript): the language used to provide interactivity to the website.
 
 - ### Frameworks:
 
@@ -371,9 +376,36 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 ![Log Out Success](documentation/features/sign-out-success.png)
 
+### Admin Page
+
+The site includes a built-in Django admin panel, providing an interface for site management. The admin page allows site administrators to view, edit, and manage core models of the project.
+
+**Accessing the Admin Page:**
+- Navigate to `/admin` to access the admin panel.
+
+**Key Features:**
+
+- Secure login required for admin access.
+
+![Admin Log In](documentation/features/admin-log-in.png)
+
+- User-friendly dashboard with search and filter options.
+
+![Admin Filter](documentation/features/admin-filter.png)
+![Admin Search](documentation/features/admin-search.png)
+
+- Ability to manage user accounts and surf sessions directly through the interface.
+
+![Admin User List](documentation/features/admin-user-list.png)
+![Admin User Edit](documentation/features/admin-edit-user.png)
+![Admin User Delete](documentation/features/admin-delete-user.png)
+
+![Admin Session List](documentation/features/admin-session-list.png)
+![Admin Session Edit](documentation/features/admin-edit-session.png)
+![Admin Session Delete](documentation/features/admin-session-delete.png)
+
 ---
 ## Design
-
 
 ### Color Scheme
 
@@ -419,7 +451,7 @@ For all other text I used the Roboto font from Google Fonts, as it is a neat, ea
 
 ### GitHub Project Management
 
-
+- [GitHub Project Kanban Board](documentation/user_stories/github-project-kanban-board.png)
 
 ---
 
@@ -577,6 +609,8 @@ A fork of the original repository can be made through GitHub using the following
 - [GoFullPage](https://gofullpage.com/): for allowing to create free full web page screenshots.
 - [Materialize](https://materializecss.com/footer.html): for the code to push the footer to the bottom of each page regardless of the content size.
 - [Code Institute](https://codeinstitute.net/) "Code Star" walkthrough project: for the code for the navigation bar and authentication pages.
+- [StackOverflow](https://stackoverflow.com/questions/70558856/django-how-to-prevent-to-accept-future-date): for the code to prevent a future date being used.
+- [VinDevs](https://vindevs.com/blog/how-to-get-the-current-user-in-a-django-model-p64/): for the code to only display the logged in users sessions.
 
 ## Acknowledgments
 
