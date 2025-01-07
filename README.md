@@ -98,14 +98,30 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 ### Header
 
-- Displays the user's authentication status.
-- Different navigation links are displayed based on whether the user is logged in or not.
+![Logged In Header](documentation/features/logged-in-header-desktop.png)
+![Logged Out Header](documentation/features/logged-out-header-desktop.png)
+
 - The site logo is clickable and redirects to the home page.
+
+![Logo](documentation/features/logo.png)
+
+- Displays the user's authentication status.
+
+![Logged In Status](documentation/features/logged-in-status.png)
+![Logged Out Status](documentation/features/logged-out-status.png)
+
+- Different navigation links are displayed based on whether the user is logged in or not.
 - The active page link is solid, while inactive links appear faded for clarity.
+
+![Logged In Nav Bar](documentation/features/logged-in-nav-bar-desktop.png)
+![Logged Out Nav Bar](documentation/features/logged-in-nav-bar-desktop.png)
 
 **Responsiveness**:  
 - On smaller screens, the navigation bar collapses into a hamburger menu that expands when clicked.
-- The authentication status is hidden on smaller screens to save space and maintain a clean layout.
+- The authentication status is also included in the expanded hamburger menu to save space.
+
+![Header Closed Hamburger](documentation/features/header-closed-hamburger.png)
+![Header Open Hamburger](documentation/features/header-open-hamburger.png)
 
 ---
 
@@ -114,6 +130,8 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 - Displays the website name.
 - Contains social media links with the prompt "Follow us" for user engagement.
 - Links to Facebook, Twitter, Instagram, and YouTube.
+
+
 
 **Responsiveness**:  
 - The footer is fixed at the bottom of the page regardless of content size.
@@ -372,41 +390,100 @@ After account setup the deployment steps are as follows:
 
 | Key | Value |
 | --- | --- |
-| `DATABASE_URL` | user's own value |
-| `SECRET_KEY` | user's own value |
+| `DATABASE_URL` | "your_database_url" |
+| `SECRET_KEY` | "your_secret_key" |
 
 ### 4. Prepare Django for Heroku Deployment:
 
-- Create an env.py file
+- Create an env.py file:
+  - In the root directory of your project, create a new file named `env.py`.  
+  - Add environment variables to the file:  
+    ```python
+    import os
+
+    os.environ.setdefault("DATABASE_URL", "<your-database-URL>")
+    os.environ["SECRET_KEY"] = "<your_secret_key>"
+    ```
+  - Add envy.py to .gitignore
 
 - Install the required packages:
-  pip install gunicorn django-heroku psycopg2
+  Run the following command to install necessary packages:  
+    ```bash
+    pip install gunicorn django-heroku psycopg2
+    ```
 
-- Update requirements.txt
+- Update requirements.txt:
+  ```bash
+  pip freeze > requirements.txt
+  ```
 
-- Add Heroku to allowed_hosts
+- Update settings.py:
+  - Set DEBUG to FALSE. 
+  - Add '.herokuapp.com' and your 'hostname' to the list of allowed hosts.
+  - Change the value of SECRET_KEY:
+    ```python
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+    ```
+  - Update DATABASE_URL:
+    ```python
+    DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
+    ```
 
 - Create a Procfile in your project"s root directory and add:
+    ```python
     web: gunicorn <your_project_name>.wsgi
-
+    ```
 
 ### 5. Push to GitHub
 
+Commit your changes and push to GitHub
+
 ### 6. Deploy
 
+- Under the **Manual Deploy** section, select the branch to deploy (e.g. main).
+- Click **Deploy Branch**.
+- Once deployed, click **Open App** to view your project.
+
+## Clone project
+
+A local clone of this repository can be made on GitHub using the following steps:
+
+1. Navigate to GitHub and log in.
+2. The [Surf Track Respository](https://github.com/elerihulme/surf-track) can be found at this location.
+3. Click on **Code** and choose your clone method from HTTPS, SSH or GitHub CLI, copy the URL to your clipboard by clicking the '**Copy**' button.
+4. Open your Git Bash Terminal.
+5. Change the current working directory to the location you want the cloned directory to be made.
+6. Type `git clone`, paste in the copied URL and then press '**Enter**' to create the local clone.
+7. Using the ``pip3 install -r requirements.txt`` command, the dependencies and libraries needed for Surf Track will be installed.
+8. Set up your **env.py** file and add your own SECRET_KEY and DATABASE_URL.
+9. Ensure that your **env.py** file is placed in your **.gitignore** file and follow the remaining steps in the above Django Project Setup section before pushing your code to GitHub.
+
+## Fork Project
+
+A fork of the original repository can be made through GitHub using the following steps:  
+
+1. Navigate to GitHub and log in.  
+2. The [Surf Track Respository](https://github.com/elerihulme/surf-track) can be found at this location.
+3. Above the repository file section click on the '**Fork**' button to fork this repository.
+4. You should now have access to a forked copy of this repository in your Github account.
 
 ---
 
 ## Credits
 
-- [Django](https://www.djangoproject.com/) for the framework.
+- [Django](https://www.djangoproject.com/): for the framework.
 - [Font awesome](https://fontawesome.com/): for the free access to icons.
 - [Render](https://render.com/): for providing a free hosting.
 - [Postgresql](https://www.postgresql.org/): for providing a free database.
 - [googlefonts](https://fonts.google.com/): for providing free fonts.
-- [favicon.io](https://favicon.io/): for providing free favicons.
-- [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): for providing a free platform to test website responsiveness
-- [GoFullPage](https://gofullpage.com/): for allowing to create free full web page screenshots;
+- [Coolers](https://coolors.co/): for creating the colour palette.
+- [favicon.io](https://favicon.io/): for providing free favicon.
+- [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): for providing a free platform to test website responsiveness.
+- [GoFullPage](https://gofullpage.com/): for allowing to create free full web page screenshots.
+- [Materialize](https://materializecss.com/footer.html): for the code to push the footer to the bottom of each page regardless of the content size.
+- [Code Institute](https://codeinstitute.net/) "Code Star" walkthrough project: for the code for the navigation bar and authentication pages.
 
 ## Acknowledgments
 
