@@ -129,9 +129,9 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 - Displays the website name.
 - Contains social media links with the prompt "Follow us" for user engagement.
-- Links to Facebook, Twitter, Instagram, and YouTube.
+- Links to Facebook, X, Instagram, and YouTube.
 
-
+![Footer](documentation/features/footer.png)
 
 **Responsiveness**:  
 - The footer is fixed at the bottom of the page regardless of content size.
@@ -144,11 +144,17 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 - The home page serves as a dynamic feed displaying the latest surf sessions logged by users.
 
 **For Non-Logged-In Users**:  
+
+![Home Logged Out User](documentation/features/logged-out-home-desktop.png)
+
 - The home page displays a welcome message and prompts users to log in or sign up.  
 - A list is displayed, detailing the benefits of joining the platform, such as tracking surf sessions and learning from other surfers.
 - A call-to-action button for the user to login and a link if they need to sign up.
 
 **For Logged-In Users**:  
+
+![Home Logged In User](documentation/features/logged-in-home-desktop.png)
+
 - Displays a table of the latest surf sessions posted by users in reverse chronological order.  
 - Columns include:
   - **User** – The surfer who logged the session.
@@ -157,17 +163,33 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
   - **Wave Rating** – Overall rating of wave conditions (hidden on smaller screens for responsiveness).  
   - **Details** – A button labeled "View Details" opens a modal with full session information.
 
+![Home Logged In Table Columns](documentation/features/home-page-logged-in-table-info-desktop.png)
+
+
 **Pagination**:  
 - Sessions are paginated, with 10 sessions per page.  
 - Navigation buttons ("Next" and "Previous") allow users to switch between pages, ensuring a seamless browsing experience.  
 - On the last page, only the "Previous" button is visible to indicate no further sessions are available.
 
-**Modal View**:  
+![First Page Pagination](documentation/features/first-page-pagination.png)
+![Mid Page Pagination](documentation/features/mid-page-pagination.png)
+![Last Page Pagination](documentation/features/last-page-pagination.png)
+
+**Modal View**:
+
+![View Details Modal](documentation/features/home-view-details-modal.png)
+
 - Clicking "View Details" opens a modal that displays:
-  - Full session details (user, location, wave height, wind speed, tide, surfboard used, and additional notes).  
+  - Full session details (user, location, wave height, wind speed, tide, surfboard used, and additional notes).
+
+- If the session belongs to the logged in user, some text is dispalyed informing them that if they wish to edit or delete this sessions, then they should visit the 'My Sessions" page, and provides a link.
+
+![View Details Modal Message](documentation/features/home-view-details-edit-delete-message.png)
 
 **Responsiveness**:  
 - The wave rating column is hidden on smaller screens to prevent horizontal scrolling and ensure the table fits neatly.
+
+![Home Mobile](documentation/features/home-page-table-mobile.png)
 
 ---
 
@@ -176,8 +198,20 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 - Displays a list of surf sessions logged by the currently authenticated user.
 
 **For Logged-In Users**:  
-- Available only to logged-in users. Non-authenticated users will not see the "My Sessions" link in the navigation bar.  
-- If no sessions are logged, users see a message with a call-to-action button encouraging them to log their first session.  
+- Available only to logged-in users. Non-authenticated users will not see the "My Sessions" link in the navigation bar.
+
+![Logged Out Header](documentation/features/logged-out-header-desktop.png)
+
+** No Sessions Logged**:
+- If no sessions are logged, users see a message with a call-to-action button encouraging them to log their first session.
+
+![My Sessions - No Sessions](documentation/features/my-sessions-no-sessions.png)
+
+**Sessions Logged**:
+
+- If sessions are logged, users see a table similar to the home page dispalying a list of only their surf sessions.
+
+![My Sessions - Sessions](documentation/features/my-sessions-with-sessions.png)
 
 **Table of Sessions**:  
 - Sessions are shown in reverse chronological order, with columns for:  
@@ -188,23 +222,46 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
   - **Details** – "View Details" button opens a modal with session information.  
   - **Edit/Delete** – "Edit" and "Delete" buttons to allow users to manage their sessions.  
 
+**View Details Modal View**:
+
+![View Details Modal](documentation/features/my-sessions-view-details-modal.png)
+
 **Edit/Delete Column**:  
 - **Edit** – Redirects to an edit form prefilled with session data.  
-- **Delete** – Opens a confirmation modal to ensure intentional deletion.  
+- **Delete** – Opens a confirmation modal with 'cancel' and 'delete' buttons to ensure intentional deletion.
+             - Upon deletion a success message is displayed and the user is redirected back to the 'My Sessions" page with the session deleted.
+
+![Delete Modal](documentation/features/my-sessions-delete-modal.png)
+![Successful Deletion](documentation/features/successful-deletion.png)
+
 
 **Pagination**:  
 - Displays 10 sessions per page, with pagination links for easy navigation between older and newer sessions.
 - On the last page, only the "Previous" button is visible to indicate no further sessions are available.  
 
+![First Page Pagination](documentation/features/first-page-pagination.png)
+![Mid Page Pagination](documentation/features/mid-page-pagination.png)
+![Last Page Pagination](documentation/features/last-page-pagination.png)
+
+**Responsiveness**:  
+- The user and wave rating columns are hidden on smaller screens to prevent horizontal scrolling and ensure the table fits neatly.
+
+![My Sessions Mobile](documentation/features/my-sessions-table-mobile.png)
+
+
 ---
 
 ### Log Session Page
 
+![Log Session Form](documentation/features/log-session-form-1.png)
+
+![Log Session Form](documentation/features/log-session-form-2.png)
+
 - Provides a form for users to log a new surf session.
 - The form automatically assigns the logged in user to the session.
 - Form fields include:
-  - **Date** – Select a date (date picker).  
-  - **Time** – Time of the session.  
+  - **Date** – Select a date (date picker), default is set to the current date  
+  - **Time** – Time of the session, default is set to 00:00
   - **Location** – Drop-down list of predefined surf spots.  
   - **Wave Height** – Enter wave height in feet.  
   - **Wind Speed** – Wind speed (mph).  
@@ -219,46 +276,73 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 - Fields with an asterix must be filled in.  
 
 **Success/Error Feedback**:  
-- Users receive a success message if the form is submitted successfully.  
-- Form errors are displayed inline for individual fields if validation fails.  
+- Users is redirected to the home page and receives a success message if the form is submitted successfully.
+
+![Log Session Success](documentation/features/log-session-success.png)
+
+- Form errors are displayed inline for individual fields if validation fails. 
+
+![Log Session Fail](documentation/features/log-session-error-message.png)
 
 ---
 
 ### Edit Session Page
 
+![Edit Session Form](documentation/features/edit-session-form-1.png)
+
+![Edit Session Form](documentation/features/edit-session-form-2.png)
+
 - Similar to the log session page but pre-populated with the session’s existing data.  
-- Users can modify session details and save changes.
-- Cancel button is available, if users change their mind, and are then redirected back to 'My Sessions' page.  
+- Users can modify session details and save changes, or  click 'cancel' be redirected back to the 'My Sessions" page.  
 
 **Access Control**:  
-- Only the user who created the session can access and edit it.  
-- Unauthorized users attempting to access the edit page are redirected.  
+- Only the user who created the session can access and edit it.    
 
 **Success/Error Feedback**:  
-- Success message on successful update.  
-- Inline error messages for validation issues.  
+- Success message on successful update. and redircteion back to the 'My Sessions' Page.  
+
+![Edit Session Success](documentation/features/edit-session-success.png)
+
+- Inline error messages for validation issues.
+
+![Edit Session Fail](documentation/features/edit-session-fail.png)
 
 ---
 
 ### Register Page
 
+![Sign Up Page](documentation/features/sign-up-form.png)
+
 - Provides a form for new users to create an account. 
-- Prompt for users who already have an acoount to sign in. 
+- Prompt for users who already have an acoount to sign in.
+
+![Sign In Link](documentation/features/register-sign-in-link.png)
+
 - Form fields include:  
   - **Username**  
   - **Email**  
   - **Password (twice for confirmation)**
 
 **Success/Error Feedback**: 
-- Error messages are displayed inline for invalid inputs.  
-- Successful registration redirects users to the home page.  
+- Error messages are displayed inline for invalid inputs.
+
+![Sign Up Error](documentation/features/sign-up-error.png)
+
+- Successful registration redirects users to the home page and displays a success message. 
+
+![Sign Up Success](documentation/features/sign-up-success.png)
 
 ---
 
 ### Login Page
 
+![Log In Page](documentation/features/log-in-page.png)
+
 - Allows existing users to log into their accounts.
-- Prompt for users who don't have an account yet to sign up.  
+- Prompt for users who don't have an account yet to sign up with link. 
+
+![Sign Up Message and Link](documentation/features/log-in-sign-up-message.png)
+
 - Form fields:  
   - **Username/Email**  
   - **Password**  
@@ -266,17 +350,26 @@ The Surf Track platform is designed with a clean, intuitive interface to provide
 
 **Success/Error Feedback**:
 - Users receive an error message if authentication fails.
-- Successful login reieves a success messages and redirects users to the home page.   
+
+![Sign In Error](documentation/features/sign-in-error.png)
+
+- Successful login reieves a success messages and redirects users to the home page.
+
+![Sign In Success](documentation/features/sign-in-success.png)
 
 ---
 
 ### Logout Page
+
+![Log Out Page](documentation/features/sign-out-page.png)
 
 - Simple confirmation page asking users if they want to log out.  
 - Clicking "Sign Out" logs the user out and redirects to the home page.  
 
 **Success Feedback**:
 - Successful sign out receives a success message.
+
+![Log Out Success](documentation/features/sign-out-success.png)
 
 ---
 ## Design
